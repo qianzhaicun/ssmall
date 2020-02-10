@@ -10,6 +10,7 @@
 <body>
     <div class="main">
         <h2 class="title"><span>商品管理</span></h2>
+        <h4><a href="/SSMall/json/test/testRequestBody" target="_blank">ajson2test</a></h4>
         <form action="deletes" method="post">
         <table border="1" width="100%" class="tab">
             <tr>
