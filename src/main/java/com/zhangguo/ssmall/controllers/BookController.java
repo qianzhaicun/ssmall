@@ -5,17 +5,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zhangguo.ssmall.entities.Book;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.logging.Log;
 @Controller
@@ -52,6 +56,43 @@ public class BookController {
     	list.add(new Book(2,"轻量级JaveEE 企业开发实战","李刚"));
     	return list;
     }
+    /////////////////////////////////////////xml test
+    @RequestMapping(value="/xmltest")
+    public String list3(Model model){
+        return "sendxml";
+    } 
     
+    @RequestMapping(value="/xmltest2")
+    public String list4(Model model){
+        return "readxml";
+    }     
+    
+    @RequestMapping(value="/sendxml",method=RequestMethod.POST)
+    public void sendxml(@RequestBody Book book) {
+    	logger.info(book);
+    	logger.info("接收xml成功");
+    }
 	
+    //ResponseBody会将book自动转成xml返回
+    @RequestMapping(value="/readxml",method=RequestMethod.POST)
+    public @ResponseBody Book readxml() throws Exception{
+    	
+    	//从xml创建类
+    	//通过JAXBContent的newInstance方法，传递一个class就可以返回上下文
+    	JAXBContext context = JAXBContext.newInstance(Book.class);
+    	//创建一个unmarshall对象
+    	Unmarshaller unmar = context.createUnmarshaller();
+    	logger.info(222222);
+    	InputStream is = this.getClass().getResourceAsStream("/book.xml");
+    	logger.info(333333);
+    	//Unmarshall 对象的unmarshall方法可以进行xml到java对象的转换
+    	Book book2 = (Book) unmar.unmarshal(is);
+    	logger.info(444444);
+    	//手动创建类
+    	Book book = new  Book(2,"轻量级JaveEE 企业开发实战","李刚");
+    	logger.info(book);
+    	
+    	return book;
+    }
+    
 }

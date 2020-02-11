@@ -2,6 +2,9 @@ package com.zhangguo.ssmall.entities;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.*;
+//
+@XmlRootElement
 public class Book implements Serializable {
 	
 	public Book() {
@@ -22,18 +25,22 @@ public class Book implements Serializable {
 	public Integer getId() {
 		return id;
 	}
+	
+	@XmlElement
 	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {
 		return name;
 	}
+	@XmlElement
 	public void setName(String name) {
 		this.name = name;
 	}
 	public String getAuthor() {
 		return author;
 	}
+	@XmlElement
 	public void setAuthor(String author) {
 		this.author = author;
 	}
