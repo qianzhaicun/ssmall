@@ -20,7 +20,7 @@ import com.zhangguo.ssmall.entities.User2;
 public class User2Controller {
 	private static final Log logger = LogFactory.getLog(User2Controller.class);
 	
-	@RequestMapping(value="/{formName}")
+	@RequestMapping(value="/user2/{formName}")
 	public String loginForm(@PathVariable String formName)
 	{
 		return formName;
