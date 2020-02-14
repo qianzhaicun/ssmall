@@ -111,6 +111,15 @@
         class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
     </bean>
     
+<!--     拦截器 -->
+
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/*"/>
+    		<!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors下面的Interceptor将拦截所有的请求 -->  
+    	 	<bean class="com.zhangguo.ssmall.interceptor.AuthorizationInterceptor"/>
+    	</mvc:interceptor>
+    </mvc:interceptors>
 
 
 </beans>

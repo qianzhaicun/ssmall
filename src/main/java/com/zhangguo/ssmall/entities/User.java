@@ -3,6 +3,8 @@ package com.zhangguo.ssmall.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class User implements Serializable{
 	/**
 	 * 
@@ -74,5 +76,24 @@ public class User implements Serializable{
 	public void setDeptid(Integer deptid) {
 		this.deptid = deptid;
 	}
+	private MultipartFile image;
+	
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+	
+	public String getLoginname() {
+		return loginname;
+	}
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
+	}
+	private String loginname;
+	
 	
 }
