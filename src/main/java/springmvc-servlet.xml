@@ -18,6 +18,11 @@
 
     <!-- 支持mvc注解驱动 -->
     <mvc:annotation-driven enable-matrix-variables="true" />
+    
+    
+    
+
+
 
     <!-- 配置映射媒体类型的策略 -->
     <bean
@@ -105,5 +110,7 @@
     <bean id="multipartResolver"
         class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
     </bean>
+    
+
 
 </beans>
