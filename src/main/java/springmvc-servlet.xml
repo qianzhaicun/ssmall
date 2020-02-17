@@ -19,6 +19,7 @@
     <!-- 支持mvc注解驱动 -->
     <mvc:annotation-driven enable-matrix-variables="true" />
     
+     <mvc:resources mapping="/pdf/**" location="/pdf/"/>
     
     
 
@@ -78,7 +79,7 @@
     <bean id="freemarkerConfig"
         class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <!-- 模板路径 -->
-        <property name="templateLoaderPath" value="/WEB-INF/views/jstl/" />
+        <property name="templateLoaderPath" value="/WEB-INF/excelTemplete/" />
         <property name="freemarkerSettings">
             <props>
                 <!-- 刷新模板的周期，单位为秒 -->
@@ -116,7 +117,7 @@
     <mvc:interceptors>
     	<mvc:interceptor>
     		<mvc:mapping path="/*"/>
-    		<!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors下面的Interceptor将拦截所有的请求 -->  
+<!--     		使用bean定义一个Interceptor，直接定义在mvc:interceptors下面的Interceptor将拦截所有的请求   -->
     	 	<bean class="com.zhangguo.ssmall.interceptor.AuthorizationInterceptor"/>
     	</mvc:interceptor>
     </mvc:interceptors>
